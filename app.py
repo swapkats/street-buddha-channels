@@ -29,7 +29,7 @@ def get_quote_details(quote_code):
         'low52': codes['low52'],
         'low52': codes['low52'],
     }
-    return codes
+    return res
 
 @app.route('/api/v1.0/quotes/<string:quote_code>', methods=['GET'])
 
