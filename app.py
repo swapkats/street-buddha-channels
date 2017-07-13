@@ -2,6 +2,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 from nsetools import Nse
+import logging
 
 import simplejson as json
 
@@ -45,3 +46,14 @@ def get_quotes():
     for position in positions:
         quotes[position['s']] = get_quote_details(position['s'])
     return jsonify(quotes)
+
+@app.route('/api/v1.0/symbols', methods=['GET'], endpoint='get_symbols')
+
+def get_symbols():
+  all_stock_symbols = nse.get_stock_codes()
+  #symbols = json.loads(all_stock_symbols)
+  # symbols = {}
+  # for symbol in all_stock_symbols:
+  #   symbols[symbol] = all_stock_symbols[symbol].encode('UTF-8', 'replace')
+  # return jsonify(all_stock_symbols)
+  return json.dumps(all_stock_symbols, encoding='latin1') # jsonify(symbols)

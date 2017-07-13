@@ -1,2 +1,4 @@
 nsetools
 flask
+flask-cors
+simplejson
